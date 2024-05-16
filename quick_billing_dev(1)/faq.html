@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>FAQ Page</title>
+    <style>
+        /* Basic styling for the FAQ page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Styling for the FAQ section */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Styling for individual FAQ items */
+        .faq-item {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            display: none;
+        }
+
+        /* Styling for the "Show/Hide" button */
+        .show-hide-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .show-hide-button:hover {
+            background-color: #0056b3;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // JavaScript to toggle FAQ answers
+        $(document).ready(function(){ 
+            $(".faq-question").click(function() {
+            $(this).next(".faq-answer").slideToggle();
+        });
+    })
+       
+    </script>
+</head>
+<body>
+    <a href="#" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <h1 style="color:#007acc">Frequently Asked Questions</h1>
+    <div class="faq-section">
+        <!-- FAQ Item 1 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">1. What is billing system?</div>
+            <div class="faq-answer">=> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">2. How can I contact support?</div>
+            <div class="faq-answer">=> You can contact our support team by email at <b style="color: #007acc;">billingsystem@gmail.com</b></div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">3. Is there a mobile app available?</div>
+            <div class="faq-answer">=> No, we dont have any app yill know but you will seen in future</div>
+        </div>
+    </div>
+</body>
+</html>
+

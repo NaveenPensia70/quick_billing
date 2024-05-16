@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="loginofficial.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <style>
+        .valid-input {
+            border: 2px solid green;
+        }
+
+        .invalid-input {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="backbtn">
+            <a href="Official_Website.html" class="back-icon"><i class='far fa-arrow-alt-circle-left'></i></a>
+        </div>
+        <div class="login-signup-form">
+            <div class="login-form">
+
+                <img src="Logo1.png" alt="Logo" class="logo">
+
+                <h1>Login</h1>
+                <form action="http://localhost/backend/signuplogin.php" method="POST">
+                    <input type="text" placeholder="Email" name="nameuser" required>
+                    <input type="password" placeholder="Password" name="pass" required>
+                    <input type="hidden" name="action" value="login">
+
+                    <input type="submit" value="Login" name="Submit">
+                </form>
+                <p>Don't have an account? <a href="#" id="tooglesign">Sign Up</a></p>
+            </div>
+            <div class="signup-form">
+                <img src="Logo1.png" alt="Logo" class="logo">
+                <h1>Sign Up</h1>
+
+                <form action="http://localhost/backend/signuplogin.php" method="POST">
+                    <input type="text" name="businessname" placeholder="Business Name" required>
+                    <input type="number" name="gst" placeholder="GST" required>
+                    <input type="text" name="nameuser" placeholder="Username" required>
+                    <input type="number" name="phno" placeholder="Phone Number" required>
+                    <input type="mail" name="gmail" placeholder="mail" required>
+                    <input type="password" name="pass" placeholder="Password" required>
+                    <input type="hidden" name="action" value="register">
+
+                    <div>
+                        <div>&nbsp; Who are you? </div>
+                        <input type="radio" value="wholesaler" name="wholesaler">
+                        <label for="radio">Wholesaler</label>
+                        <input type="radio" value="retailer" name="retailer">
+                        <label for="radio">Retailer</label>
+                    </div>
+                    <input type="submit" value="Submit" name="Submit">
+
+                </form>
+                <p>Already have an account? <a href="#" id="logintoggle">Login</a></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".signup-form").hide();
+            $("#tooglesign").click(function () {
+                $(".login-form").hide();
+                $(".signup-form").show();
+            });
+            $("#logintoggle").click(function () {
+                $(".login-form").show();
+                $(".signup-form").hide();
+            });
+
+            // Custom validation for GST
+            $("input[name='gst']").on('input', function () {
+                var gstNumber = $(this).val();
+                if (gstNumber.length === 16 && !isNaN(gstNumber)) {
+                    $(this).removeClass('invalid-input').addClass('valid-input');
+                } else {
+                    $(this).removeClass('valid-input').addClass('invalid-input');
+                }
+            }).on('focusout', function () {
+                var isValid = $(this).hasClass('valid-input');
+                if (!isValid) {
+                    alert("GST is not correct. Please enter again.");
+                }
+            });
+
+            // Custom validation for phone number
+            $("input[name='phno']").on('input', function () {
+                var phoneNumber = $(this).val();
+                if (phoneNumber.length === 10 && !isNaN(phoneNumber)) {
+                    $(this).removeClass('invalid-input').addClass('valid-input');
+                } else {
+                    $(this).removeClass('valid-input').addClass('invalid-input');
+                }
+            }).on('focusout', function () {
+                var isValid = $(this).hasClass('valid-input');
+                if (!isValid) {
+                    alert("Phone number is not correct. Please enter again.");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

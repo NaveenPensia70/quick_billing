@@ -1,0 +1,119 @@
+body {
+  background-image: url("photos/backgroundlogin.png");
+  background-size:73% auto;
+
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+
+@media (max-width: 480px) {
+  body {
+      background-image: url(photos/backgroundlogin.png);
+      background-size: cover;
+      margin: 0%;
+  }
+  .backbtn{
+      margin-top: -35rem;
+      margin-left: 100rem;
+      
+  }
+  .backbtn a{
+      color: white;
+      
+  }
+      
+  .login-signup-form {
+      height: 80vh;
+     margin-left: 15%;
+     margin-right: 75%;
+      width: 300%;
+      padding: 2rem;
+      background-color: white;
+      object-fit: contain;
+    }
+  
+}
+
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  body {
+      background-image: url(photos/backgroundlogin.png);
+      background-size: cover;
+      margin: 0%;
+  }
+  
+  
+  .login-signup-form {
+      height: 50vh;
+     margin-left:15%;
+     margin-right:75%;
+         width: 300%;
+      padding: 2rem;
+      background-color: white;
+    }
+    
+  }
+@media (min-width: 1025px) {
+  body {
+    background-image: url(photos/backgroundlogin.png);
+      margin: 0%;
+      background-size: 73% 100%;
+      
+ }
+ .backbtn{
+  margin-top: -35rem;
+  margin-left: 1%;
+  
+}
+.backbtn a{
+  color: white;
+  
+}
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+}
+.login-signup-form {
+  height: 50vh;
+ margin-left: 72%;
+     width: 300%;
+  padding: 2rem;
+  background-color: white;
+  
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+/* .login-form {
+  width: 60%;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 5px;
+} */
+.logo {
+  height: 50px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius:5px;
+}

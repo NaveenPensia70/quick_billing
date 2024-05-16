@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Page</title>
+    <link rel="stylesheet" href="Inventory_Page.css">
+</head>
+
+<body>
+    <header>
+        <h1>Inventory</h1>
+    </header>
+    <main>
+        <div class="inventory-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="inventory-table">
+                    <!-- Inventory items will be displayed here -->
+                </tbody>
+            </table>
+        </div>
+        <div class="add-product">
+            <h2>Add Product</h2>
+            <form id="product-form">
+                <input type="text" id="product-name" placeholder="Product Name" required>
+                <input type="number" id="quantity" placeholder="Quantity" required>
+                <input type="number" id="price" placeholder="Price" required>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

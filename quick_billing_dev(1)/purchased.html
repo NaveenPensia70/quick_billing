@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Purchasing Stock Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        
+
+        h1 {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2587c7;
+        }
+
+        .add-button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .calculate-button {
+            background-color: #f39c12;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    
+   <a href="profile.php"><i class='far fa-arrow-alt-circle-left' style="color:black;"> </i></a>
+    
+    
+    <h1>Purchasing Stock Details</h1>
+    <div class="container">
+        <form action="purchaseddata.php" method="POST">
+            <h2>Stock Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Item ID</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="item_name[]"></td>
+                        <td><input type="text" name="item_id[]"></td>
+                        <td><input type="number" name="quantity[]" oninput="calculateTotal(this)"
+                                onkeydown="if(event.keyCode==13) { event.preventDefault(); addNewItem(); }"></td>
+                        <td><input type="number" name="amount[]" oninput="calculateTotal(this)"
+                                onkeydown="if(event.keyCode==13) { event.preventDefault(); addNewItem(); }"></td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-button" type="button" onclick="addNewItem()">Add Item</button>
+            <button class="calculate-button" type="button" onclick="calculateFinalTotal()">Calculate Total</button>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        function addNewItem() {
+            const tableBody = document.querySelector('table tbody');
+            const newRow = tableBody.insertRow();
+
+            const itemCell = newRow.insertCell(0);
+            itemCell.innerHTML = '<input type="text" name="item_name[]">';
+
+            const idCell = newRow.insertCell(1);
+            idCell.innerHTML = '<input type="text" name="item_id[]">';
+
+            const quantityCell = newRow.insertCell(2);
+            quantityCell.innerHTML = '<input type="number" name="quantity[]" oninput="calculateTotal(this)" onkeydown="if(event.keyCode==13) { event.preventDefault(); addNewItem(); }">';
+
+            const amountCell = newRow.insertCell(3);
+            amountCell.innerHTML = '<input type="number" name="amount[]" oninput="calculateTotal(this)" onkeydown="if(event.keyCode==13) { event.preventDefault(); addNewItem(); }">';
+
+            const totalCell = newRow.insertCell(4);
+            totalCell.textContent = '0';
+        }
+
+        function calculateTotal(input) {
+            const row = input.parentElement.parentElement;
+            const quantityInput = row.cells[2].querySelector('input');
+            const amountInput = row.cells[3].querySelector('input');
+            const totalCell = row.cells[4];
+
+            const quantity = parseFloat(quantityInput.value) || 0;
+            const amount = parseFloat(amountInput.value) || 0;
+            const total = quantity * amount;
+            totalCell.textContent = total;
+        }
+
+        function calculateFinalTotal() {
+            const totalCells = document.querySelectorAll('table tbody tr td:last-child');
+            let finalTotal = 0;
+
+            totalCells.forEach(cell => {
+                finalTotal += parseFloat(cell.textContent);
+            });
+
+            alert(`Final Total: ${finalTotal}`);
+        }
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>
